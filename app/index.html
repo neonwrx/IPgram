@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>IPGram</title>
+	<link rel="stylesheet" href="css/libs.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css" >
+</head>
+<body>
+	<!-- LOGIN DIALOG -->
+	<dialog id="loginDialog" class="mdl-dialog">
+		<h4 class="mdl-dialog__title">Sign In</h4>
+		<div class="mdl-dialog__content">
+			<p id="loginError">Error</p>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" id="loginEmail">
+				<label class="mdl-textfield__label" for="sample3">Email...</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" id="loginPassword">
+				<label class="mdl-textfield__label" for="sample3">Password...</label>
+			</div>
+		</div>
+		<div class="mdl-dialog__actions">
+			<button id="loginBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+				Sign In
+			</button>
+			<div id="loginProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+		</div>
+	</dialog>
+
+	<div class="modal fade" id="EditorCreateModal" tabindex="-1" role="dialog" aria-labelledby="EditorCreateModalLabel">
+		<div class="modal-dialog " role="document">
+			<div class="modal-content padding-35">
+				<div class="modal-header no-border-bottom">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+					<h4 class="modal-title" id="EditorCreateModalLabel">Add new guideline</h4>
+				</div>
+				<div class="modal-body image-size">
+					<div id="div_id_name" class="form-group">
+						<label for="id_name" class="control-label required-field ">
+							Cycle name
+						</label>
+							<div class="">
+								<input class=" form-control" id="id_name" maxlength="200" name="name" type="text" value="FP1">
+							</div>
+					</div>
+					<div id="div_id_primary_name" class="form-group">
+						<label for="id_primary_name" class="control-label">
+							Primary communication
+						</label>
+						<div class="">
+							<select class=" form-control" id="id_primary_name" name="primary_name">
+								<option value="">---------</option>
+								<option value="1">Marlboro</option>
+								<option value="2">Chesterfield</option>
+								<option value="9">SAMPOERNA A</option>
+								<option value="10">Philip Morris</option>
+								<option value="11">L&amp;M</option>
+								<option value="12">Parlament</option>
+								<option value="13">2017</option>
+								<option value="14">Muratti</option>
+								<option value="15">Next</option>
+								<option value="16">President</option>
+							</select>
+						</div>
+					</div>
+					<div id="div_id_secondary_name" class="form-group  ">
+						<label for="id_secondary_name" class="control-label  ">
+							Secondary communication
+						</label>
+						<div class="">
+							<select class=" form-control" id="id_secondary_name" name="secondary_name">
+								<option value="">---------</option>
+								<option value="1">Marlboro</option>
+								<option value="2">Chesterfield</option>
+								<option value="9">SAMPOERNA A</option>
+								<option value="10">Philip Morris</option>
+								<option value="11" selected="selected">L&amp;M</option>
+								<option value="12">Parlament</option>
+								<option value="13">2017</option>
+								<option value="14">Muratti</option>
+								<option value="15">Next</option>
+								<option value="16">President</option>
+							</select>
+						</div>
+					</div>
+					<div id="div_id_brand" class="form-group  ">
+						<label for="id_brand" class="control-label required-field ">
+							Brand
+						</label>
+						<div class="">
+							<select class=" form-control" id="id_brand" name="brand">
+								<option value="">---------</option>
+								<option value="1">Marlboro</option>
+								<option value="2">Chesterfield</option>
+								<option value="9">SAMPOERNA A</option>
+								<option value="10" selected="selected">Philip Morris</option>
+								<option value="11">L&amp;M</option>
+								<option value="12">Parlament</option>
+								<option value="13">2017</option>
+								<option value="14">Muratti</option>
+								<option value="15">Next</option>
+								<option value="16">President</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class=" modal-footer no-border-top ">
+					<div class="text-left">
+						<button id="create_new_modal_btn" type="button" data-dismiss="modal" class="btn btn-warning add_new_btn">ADD</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="EditorUpdateModal" tabindex="-1" role="dialog" aria-labelledby="EditorUpdateModalLabel">
+				<div class="modal-dialog " role="document">
+						<div class="modal-content padding-35">
+								<div class="modal-header no-border-bottom">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+										<h4 class="modal-title" id="EditorUpdateModalLabel">Update guideline</h4>
+								</div>
+								<div class="modal-body image-size">
+									<div id="div_id_name" class="form-group">
+										<label for="id_name" class="control-label required-field ">
+											Cycle name
+										</label>
+										<div class="">
+											<input class=" form-control" id="id_name" maxlength="200" name="name" type="text" value="FP1">
+										</div>
+									</div>
+									<div id="div_id_primary_name" class="form-group">
+										<label for="id_primary_name" class="control-label">
+											Primary communication
+										</label>
+										<div class="">
+											<select class=" form-control" id="id_primary_name" name="primary_name">
+												<option value="1">Marlboro</option>
+												<option value="2">Chesterfield</option>
+												<option value="9">SAMPOERNA A</option>
+												<option value="10">Philip Morris</option>
+												<option value="11">L&amp;M</option>
+												<option value="12">Parlament</option>
+												<option value="13">2017</option>
+												<option value="14">Muratti</option>
+												<option value="15">Next</option>
+												<option value="16">President</option>
+											</select>
+										</div>
+									</div>
+									<div id="div_id_secondary_name" class="form-group  ">
+										<label for="id_secondary_name" class="control-label  ">
+											Secondary communication
+										</label>
+										<div class="">
+											<select class=" form-control" id="id_secondary_name" name="secondary_name">
+												<option value="1">Marlboro</option>
+												<option value="2">Chesterfield</option>
+												<option value="9">SAMPOERNA A</option>
+												<option value="10">Philip Morris</option>
+												<option value="11">L&amp;M</option>
+												<option value="12">Parlament</option>
+												<option value="13">2017</option>
+												<option value="14">Muratti</option>
+												<option value="15">Next</option>
+												<option value="16">President</option>
+											</select>
+										</div>
+									</div>
+									<div id="div_id_brand" class="form-group  ">
+										<label for="id_brand" class="control-label required-field ">
+											Brand
+										</label>
+										<div class="">
+											<select class=" form-control" id="id_brand" name="brand">
+												<option value="1">Marlboro</option>
+												<option value="2">Chesterfield</option>
+												<option value="9">SAMPOERNA A</option>
+												<option value="10">Philip Morris</option>
+												<option value="11">L&amp;M</option>
+												<option value="12">Parlament</option>
+												<option value="13">2017</option>
+												<option value="14">Muratti</option>
+												<option value="15">Next</option>
+												<option value="16">President</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class=" modal-footer no-border-top ">
+										<div class="text-left">
+												<button id="update_modal_btn" type="button" class="btn btn-warning add_new_btn">UPDATE</button>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+
+	<div class="login-cover">
+
+    <!-- MDL Spinner Component -->
+    <div class=" page-loader mdl-spinner mdl-js-spinner is-active"></div>
+
+  </div>
+
+	<div class="page">
+		<div class="header">
+			<nav class="navbar navbar-default">
+		    <nav class="navbar navbar-fixed-top">
+		      <div class="container">
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a class="navbar-brand" href="#">Iplanogram</a>
+		        </div>
+		        <div id="navbar" class="collapse navbar-collapse">
+		          <ul class="nav navbar-nav">
+		            <li><a href="#">user</a></li>
+		            <li><a href="#">brand</a></li>
+		            <li><a href="#">pack</a></li>
+		            <li><a href="#">carton</a></li>
+		            <li><a href="#">trosm</a></li>
+		            <li><a href="#">visual</a></li>
+		            <li><a href="" id="signOutBtn">logout</a></li>
+		          </ul>
+		        </div><!--/.nav-collapse -->
+		      </div>
+		    </nav>
+		</div>
+		<div class="main">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						<a type="button" id="add_new_btn" class="btn btn-warning add_new_btn" href="/guideline/create/">
+        			<i class="material-icons">add_circle_outline</i>ADD NEW GUIDELINE
+  				  </a>
+					</div>
+					<div class="col-md-10">
+						<div id="dropdown-filter" class="pull-right">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<table class="table table-striped table-hover datatable no-border dataTable no-footer" id="data-table">
+						<thead>
+							<tr>
+								<th class="text-center" rowspan="1" colspan="1">Title</th>
+								<th class="text-center" rowspan="1" colspan="1">Primary</th>
+								<th class="text-center" rowspan="1" colspan="1">Secondary</th>
+								<th class="text-center" rowspan="1" colspan="1">Brand</th>
+								<th class="text-center" rowspan="1" colspan="1">Created</th>
+								<th class="text-center" rowspan="1" colspan="1">Status</th>
+								<th class="text-center sorting-disabled" rowspan="1" colspan="1"></th>
+								<th class="text-center sorting-disabled" rowspan="1" colspan="1"></th>
+								<th class="text-center sorting-disabled" rowspan="1" colspan="1"></th>
+								<th class="text-center sorting-disabled" rowspan="1" colspan="1"></th>
+								<th class="text-center sorting-disabled" rowspan="1" colspan="1"></th>
+								<th class="text-center sorting-disabled" rowspan="1" colspan="1"></th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="preloader-spinner" class="hidden">
+    <img src="img/preloader.gif" alt="">
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyC4MQMKRPLHwpCXEQXDCpI8FKURzADObrs",
+			authDomain: "ipgram-acf3f.firebaseapp.com",
+			databaseURL: "https://ipgram-acf3f.firebaseio.com",
+			storageBucket: "ipgram-acf3f.appspot.com",
+			messagingSenderId: "212790932771"
+		};
+		firebase.initializeApp(config);
+	</script>
+	<script type="text/javascript">
+	    var spinner = {
+	        on: function(){
+	            $('#preloader-spinner').removeClass('hidden');
+	        },
+	        off: function(){
+	            $('#preloader-spinner').addClass('hidden');
+	        }
+	    }
+
+	</script>
+	<script src="js/libs.min.js"></script>
+	<script src="js/common.js"></script>
+</body>
+</html>
